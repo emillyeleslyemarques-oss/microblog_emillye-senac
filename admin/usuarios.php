@@ -7,12 +7,20 @@ require_once __DIR__. "/../vendor/autoload.php";
 $mensagemErro ="";
 $listaDeUsuarios = [];
 
-try{
+try {
     $usuarioServico = new UsuarioServico();
-        $listaDeUsuarios = $usuarioServico->listarTodos();
-} catch(Exception $e){
+    $listaDeUsuarios = $usuarioServico->listarTodos();
+} catch(Throwable $e){
+    // Usamos Throwable para capturar tanto situações de Exception quanto de Error
+    
+    // Registramos o erro no log para análise do programador
+    Utils::registrarLog($e);
+
+    // Definimos uma mensagem genérica para exibir no Front-End
     $mensagemErro = "Não foi possível carregar a lista de usuários";
 }
+
+// Utils::dump($listaDeUsuarios);
 
 require_once __DIR__ . '/../includes/cabecalho-admin.php'; 
 ?>
@@ -69,5 +77,6 @@ require_once __DIR__ . '/../includes/cabecalho-admin.php';
         <?php endif; ?>
     </article>
 </div>
+
 <script src="js/confirm.js"></script>
 <?php require_once __DIR__ . '/../includes/rodape-admin.php'; ?>
