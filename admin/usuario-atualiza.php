@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . '/../includes/cabecalho-admin.php';
+
 
 use Microblog\Helpers\Utils;
 use Microblog\Services\UsuarioServico;
@@ -36,6 +36,7 @@ usando os dados do usuário (se disponíveis) */
 $nome = $dadosUsuario['nome'] ?? "";
 $email = $dadosUsuario['email'] ?? "";
 $tipo = $dadosUsuario['tipo'] ?? "";
+
 require_once __DIR__ . '/../includes/cabecalho-admin.php'; 
 ?>
 <div class="row">
