@@ -1,6 +1,7 @@
 <?php
 
 use Microblog\Helpers\Utils;
+use Microblog\Services\UsuarioServico;
 
 require_once __DIR__ . '/vendor/autoload.php';
 /* Mensagens relacionadas ao processo de login/logout */
@@ -26,6 +27,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($email === '' || $senhaRecebida === ''){
         header("location:login.php?campos_obrigatorios");
         exit;
+    }
+
+    try{
+        //Buscando o usuário no BD através do e-mail informado
+       $usuarioServico = new UsuarioServico();
+       $usuario = $usuarioServico->buscarPorEmail($email);
+    }catch(Throwable $e){
+       Utils::registrarLog($e);
+       header("location:login.php?erro");
+       exit;
     }
 }
 
