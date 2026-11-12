@@ -33,11 +33,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //Buscando o usuário no BD através do e-mail informado
        $usuarioServico = new UsuarioServico();
        $usuario = $usuarioServico->buscarPorEmail($email);
-    }catch(Throwable $e){
+    } catch (Throwable $e){
        Utils::registrarLog($e);
        header("location:login.php?erro");
        exit;
     }
+
+    Utils::dump($usuario);
 }
 
  require_once __DIR__ . '/includes/cabecalho.php';
