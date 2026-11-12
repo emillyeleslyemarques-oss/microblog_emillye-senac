@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         <form action="" method="post" id="form-login" class="mx-auto w-50">
             <!-- se existir alguma mensage, na variavel $feedback,
-             mostramos a mensagem para a pessoa -->
+             mostramos a mensagem para a pessoa. -->
             <?php if(isset($feedback)):  ?>
                 <p class="my-2 alert alert-warning text-center">
                     <?= Utils::escaparHtml($feedback) ?>
