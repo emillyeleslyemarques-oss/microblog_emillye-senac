@@ -78,6 +78,42 @@ final class NoticiaServico
         }
     }
 
+    public function atualizar(Noticia $noticia, TipoUsuario $tipoUsuario, int $usuarioId): void
+    {
+        $sql = "UPDATE noticias
+                SET titulo = :titulo,
+                    texto = :texto,
+                    resumo = :resumo,
+                    imagem = :imagem,
+                    destaque = :destaque,
+                    categoria_id = :categoria_id
+                WHERE id = :id";
+
+        if ($tipoUsuario !== TipoUsuario::ADMIN) {
+            $sql .= " AND usuario_id = :usuario_id";
+        }
+
+        try {
+            $consulta = $this->conexao->prepare($sql);
+            $consulta->bindValue(":titulo", $noticia->getTitulo());
+            $consulta->bindValue(":texto", $noticia->getTexto());
+            $consulta->bindValue(":resumo", $noticia->getResumo());
+            $consulta->bindValue(":imagem", $noticia->getImagem());
+            $consulta->bindValue(":destaque", $noticia->getDestaque()->value);
+            $consulta->bindValue(":categoria_id", $noticia->getCategoriaId());
+            $consulta->bindValue(":id", $noticia->getId());
+
+            if ($tipoUsuario !== TipoUsuario::ADMIN) {
+                $consulta->bindValue(":usuario_id", $usuarioId);
+            }
+
+            $consulta->execute();
+        } catch (PDOException $e) {
+            Utils::registrarLog($e);
+            throw new Exception("Erro ao atualizar notícia");
+        }
+    }
+
     public function inserir(Noticia $noticia): void
     {
         $sql = "INSERT INTO noticias (
@@ -103,5 +139,28 @@ final class NoticiaServico
             Utils::registrarLog($e);
             throw new Exception("Erro ao inserir notícia");
         }        
+    }
+
+    public function excluir(int $id, TipoUsuario $tipoUsuario, int $usuarioId): void
+    {
+        $sql = "DELETE FROM noticias WHERE id = :id";
+
+        if ($tipoUsuario !== TipoUsuario::ADMIN) {
+            $sql .= " AND usuario_id = :usuario_id";
+        }
+
+        try {
+            $consulta = $this->conexao->prepare($sql);
+            $consulta->bindValue(":id", $id);
+
+            if ($tipoUsuario !== TipoUsuario::ADMIN) {
+                $consulta->bindValue(":usuario_id", $usuarioId);
+            }
+
+            $consulta->execute();
+        } catch (PDOException $e) {
+            Utils::registrarLog($e);
+            throw new Exception("Erro ao excluir notícia");
+        }
     }
 }
