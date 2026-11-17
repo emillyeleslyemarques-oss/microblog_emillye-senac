@@ -91,19 +91,32 @@ final class NoticiaServico
 
     public function buscarPorId(int $id, TipoUsuario $tipoUsuario, int $usuarioId): ?array
     {
-        $sql = "SELECT id, data, titulo, texto, resumo, imagem, destaque, usuario_id, categoria_id
-                FROM noticias
-                WHERE id = :id";
+        return $this->buscarNoticiaPorId($id, $tipoUsuario, $usuarioId);
+    }
 
-        if ($tipoUsuario !== TipoUsuario::ADMIN) {
-            $sql .= " AND usuario_id = :usuario_id";
+    public function buscarParaExibicaoPorId(int $id): ?array
+    {
+        return $this->buscarNoticiaPorId($id, null, null);
+    }
+
+    private function buscarNoticiaPorId(int $id, ?TipoUsuario $tipoUsuario, ?int $usuarioId): ?array
+    {
+        $sql = "SELECT noticias.id, noticias.data, noticias.titulo, noticias.texto,
+                       noticias.resumo, noticias.imagem, noticias.destaque,
+                       noticias.usuario_id, noticias.categoria_id, usuarios.nome AS autor
+                FROM noticias
+                LEFT JOIN usuarios ON noticias.usuario_id = usuarios.id
+                WHERE noticias.id = :id";
+
+        if ($tipoUsuario !== null && $tipoUsuario !== TipoUsuario::ADMIN) {
+            $sql .= " AND noticias.usuario_id = :usuario_id";
         }
 
         try {
             $consulta = $this->conexao->prepare($sql);
             $consulta->bindValue(":id", $id);
 
-            if ($tipoUsuario !== TipoUsuario::ADMIN) {
+            if ($tipoUsuario !== null && $tipoUsuario !== TipoUsuario::ADMIN) {
                 $consulta->bindValue(":usuario_id", $usuarioId);
             }
 

@@ -79,3 +79,27 @@ Respeite o layout.
 Utilize os métodos existentes na classe NoticiaServico.php sempre que possível.
 Caso encontre erros, faça as correções necessárias.
 No arquivo prompts.md registre este prompt, sem apagar os outros prompts existentes.
+
+## Exibição dinâmica de notícia
+
+Analise a classe NoticiaServico, a classe Noticia e a estrutura atual da página noticia.php.
+
+Identifique os métodos existentes para buscar uma notícia específica pelo seu ID.
+
+Programe a página noticia.php para exibir os detalhes completos da notícia selecionada.
+
+Devem ser exibidos:
+- Data da publicação, formatada para dia, mês e ano.
+- Autor da notícia.
+- Imagem da notícia.
+- Texto completo da notícia.
+
+A notícia deve ser identificada pelo ID recebido através da URL.
+Caso a notícia não tenha um autor associado, exiba o texto "Equipe Microblog".
+Utilize os métodos existentes na classe NoticiaServico.
+Trate situações em que o ID não seja informado ou a notícia não seja encontrada.
+Respeite os padrões que já existem no projeto.
+Caso encontre erros, faça as correções necessárias.
+
+No arquivo prompts.md registre este prompt, sem apagar os registros anteriores.
+Cada vez que for fazendo o prompt, coloque todas as informações que voce registrou e modificou no arquivo AGENTS.md.

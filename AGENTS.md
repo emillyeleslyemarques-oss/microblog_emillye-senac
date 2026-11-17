@@ -65,8 +65,11 @@ Convenções existentes:
 
 - Usuários: listagem, inserção, busca por ID/e-mail, atualização e exclusão estão presentes nos serviços e páginas. A atualização mantém a senha existente quando o campo de senha fica em branco.
 - Categorias: listagem, inserção, busca por ID, atualização e exclusão estão presentes.
-- Notícias: `NoticiaServico` implementa listagem e inserção. `admin/noticia-insere.php` valida campos e imagem; `admin/noticias.php` aplica o escopo por administrador/editor.
-- `admin/noticia-atualiza.php` ainda exibe conteúdo provisório e não implementa carregamento nem atualização. `admin/noticia-exclui.php` informa que a exclusão ainda será implementada. Não presuma que essas operações já funcionam.
+- Notícias: `NoticiaServico::listarTodos()` lista notícias no escopo de ADMIN/EDITOR; `listarDestaques()` e `listarTodasPublicas()` alimentam a página inicial e a listagem pública. `buscarPorId()` aplica escopo de ADMIN/EDITOR, enquanto `buscarParaExibicaoPorId()` busca uma notícia pelo ID para exibição pública e inclui o autor por `LEFT JOIN`.
+- `index.php` exibe notícias em destaque; `includes/todas.php` exibe todas as notícias cadastradas. Os links levam a `noticia.php` com o ID correspondente.
+- `noticia.php` valida o ID recebido pela URL, mostra data em dia/mês/ano, autor, imagem e texto completo. ID inválido ou ausente redireciona para `index.php`; ID válido sem registro exibe “Notícia não encontrada”. Notícias sem usuário associado usam “Equipe Microblog” como autor.
+- `includes/cabecalho.php` usa `CategoriaServico::listarTodos()` para compor o menu de categorias e gerar links com os respectivos IDs.
+- `admin/noticia-insere.php` valida campos e imagem; `admin/noticias.php` aplica o escopo por administrador/editor. As páginas administrativas de atualização e exclusão de notícia implementam suas operações respeitando esse escopo.
 
 ## Validação de alterações
 
