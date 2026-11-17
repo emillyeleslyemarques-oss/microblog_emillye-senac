@@ -43,3 +43,39 @@ Verifique se não existem problemas nas demais funcionalidades .
 No arquivo prompts.md registre este prompt nele.
  
 Caso ocorra algum erro corrija antes de finalizar.
+
+## Categorias dinâmicas no menu
+
+Analise a classe responsável pelas categorias, a classe NoticiaServico e o arquivo includes/cabecalho.php.
+
+Identifique os métodos existentes para listar todas as categorias cadastradas no banco de dados.
+
+Programe o arquivo includes/cabecalho.php para fazer com que o menu do site exiba dinamicamente todas as categorias existentes.
+
+Cada categoria deve possuir um link dinâmico para a página noticias-por-categoria.php.
+O link deve enviar o ID da categoria selecionada.
+
+Utilize os métodos existentes nas classes do projeto, e evite duplicação de código.
+Respeite a estrutura e os padrões já existentes.
+
+No arquivo prompts.php, registe esse prompt sem apagar os outros.
+
+## Notícias dinâmicas na página inicial
+
+Analise a classe NoticiaServico, a classe Noticia e os arquivos index.php e includes/todas.php.
+
+Identifique os métodos existentes para listar as notícias em destaque e todas as notícias cadastradas no banco de dados.
+
+Programe a página index.php para exibir as notícias marcadas como destaque, mostrando a imagem, o titulo e o resumo.
+
+Configure o link dinâmico para abrir a página noticia.php quando o usuário clicar em uma notícia, enviando o ID correspondente.
+
+Programe o arquivo includes/todas.php para realizar a exibição de todas as notícias cadastradas no banco de dados.
+
+A exibição das notícias em destaque deve ficar na index.php.
+A exibição de todas as notícias deve ser feita no arquivo includes/todas.php.
+
+Respeite o layout.
+Utilize os métodos existentes na classe NoticiaServico.php sempre que possível.
+Caso encontre erros, faça as correções necessárias.
+No arquivo prompts.md registre este prompt, sem apagar os outros prompts existentes.

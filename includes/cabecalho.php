@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$categorias = (new \Microblog\Services\CategoriaServico())->listarTodos();
+?>
 <!DOCTYPE html>
 <html lang="pt-br" class="h-100">
 
@@ -28,10 +33,13 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <li><a class="dropdown-item" href="noticias-por-categoria.php?id=1">Desenvolvimento</a></li>
-                <li><a class="dropdown-item" href="noticias-por-categoria.php?id=2">Tecnologia</a></li>
-                
+                <?php foreach ($categorias as $categoria): ?>
+                  <li>
+                    <a class="dropdown-item" href="noticias-por-categoria.php?id=<?= (int) $categoria['id'] ?>">
+                      <?= \Microblog\Helpers\Utils::escaparHtml($categoria['nome']) ?>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
               </ul>
             </li>
             <li class="nav-item"><a class="nav-link" href="admin/index.php"><i class="bi bi-lock-fill"></i> Área administrativa</a></li>
