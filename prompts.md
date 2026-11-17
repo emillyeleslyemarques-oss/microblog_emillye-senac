@@ -141,3 +141,31 @@ Não modifique a conexão com o banco de dados.
 Não altere funcionalidades que já estão funcionando.
 Identifique a causa antes de realizar alterações.
 Faça somente as alterações necessárias.
+
+## Pesquisa dinâmica de notícias
+
+Identifique os métodos existentes para pesquisar notícias no banco de dados e os padrões utilizados no projeto para realizar consultas.
+
+Programe o arquivo resultados.php para receber o termo pesquisado pelo usuário e realizar a busca de notícias utilizando a classe NoticiaServico.php.
+
+O arquivo resultados.php deverá:
+- Receber o termo de pesquisa enviado pelo JavaScript.
+- Utilizar os métodos existentes na classe NoticiaServico.php para consultar as notícias no banco de dados.
+- Retornar os resultados da pesquisa em formato JSON.
+- Tratar situações em que nenhum resultado seja encontrado.
+- Realizar o tratamento adequado de possíveis erros.
+
+Programe o arquivo busca.js para realizar a comunicação com resultados.php utilizando fetch().
+
+O arquivo busca.js deverá:
+- Capturar o termo digitado pelo usuário no campo de busca.
+- Enviar a solicitação para resultados.php utilizando fetch().
+- Receber e interpretar os dados retornados pelo PHP.
+- Exibir dinamicamente os resultados da pesquisa no Front-End.
+- Atualizar a exibição dos resultados sem precisar recarregar a página.
+- Tratar pesquisas vazias e pesquisas sem resultados.
+
+Respeite o comportamento e o layout do sistema Microblog original.
+Utilize as classes e os métodos existentes no projeto sempre que possível, evitando duplicação de código.
+Não modifique funcionalidades que já estão funcionando.
+Coloque este prompt no arquivo prompts.md sem modificar os anteriores.

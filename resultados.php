@@ -1,12 +1,34 @@
-<!-- Resposta HTML provisória usada pela busca enquanto o back-end não é implementado. -->
-<h2 class="fs-5">Resultados: <span class="badge rounded-pill text-bg-success">2</span></h2>
-<div class="list-group">
+<?php
 
-    <a class="list-group-item list-group-item-action" href="noticia.php?id=1">
-        Título provisório da notícia
-    </a>
-    <a class="list-group-item list-group-item-action" href="noticia.php?id=2">
-        Outro título provisório
-    </a>
-    
-</div>
+use Microblog\Helpers\Utils;
+use Microblog\Services\NoticiaServico;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+header('Content-Type: application/json; charset=utf-8');
+
+$termo = Utils::normalizarEntrada($_POST['busca'] ?? '', 'texto');
+
+if ($termo === '') {
+    echo json_encode([
+        'total' => 0,
+        'resultados' => [],
+    ], JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+    exit;
+}
+
+try {
+    $noticiaServico = new NoticiaServico();
+    $resultados = $noticiaServico->pesquisarPorTermo($termo);
+
+    echo json_encode([
+        'total' => count($resultados),
+        'resultados' => $resultados,
+    ], JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+} catch (Throwable $e) {
+    Utils::registrarLog($e);
+    http_response_code(500);
+    echo json_encode([
+        'erro' => 'Não foi possível realizar a pesquisa. Tente novamente.',
+    ], JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+}
