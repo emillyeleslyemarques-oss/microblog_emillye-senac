@@ -118,3 +118,26 @@ Configure o link dinâmico para abrir noticia.php enviando o ID da notícia sele
 Remova os conteúdos provisórios que estão escritos diretamente no HTML.
 Trate situações em que o ID não seja informado, a categoria não exista ou não possua notícias cadastradas.
 No arquivo prompts.md registre este prompt, sem apagar os registros anteriores.
+
+
+ ## Analise o problema de exibição do nome das categorias na página noticias-por-categoria.php.
+
+No banco de dados microblog_2026, os registros da tabela categorias são:
+
+ID 1 Segurança
+ID 2 Mercado
+ID 4 Mobile
+ID 5 Games
+ID 6 Educação
+ID 7 Desenvolvimento
+Atualmente, ao acessar noticias-por-categoria.php?id=7, o site exibe Segurança.
+Corrija esse problema para que o nome exibido corresponda ao ID da categoria selecionada.
+
+Atenção:
+
+Não modifique a classe Utils.
+Não modifique a classe CategoriaServico se seus métodos já estiverem funcionando.
+Não modifique a conexão com o banco de dados.
+Não altere funcionalidades que já estão funcionando.
+Identifique a causa antes de realizar alterações.
+Faça somente as alterações necessárias.
