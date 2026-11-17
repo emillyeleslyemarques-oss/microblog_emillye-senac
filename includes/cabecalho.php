@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $categorias = (new \Microblog\Services\CategoriaServico())->listarTodos();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="h-100">

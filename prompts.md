@@ -103,3 +103,18 @@ Caso encontre erros, faça as correções necessárias.
 
 No arquivo prompts.md registre este prompt, sem apagar os registros anteriores.
 Cada vez que for fazendo o prompt, coloque todas as informações que voce registrou e modificou no arquivo AGENTS.md.
+
+## Notícias por categoria
+
+Analise o arquivo noticias-por-categoria.php, a classe CategoriaServico, a classe NoticiaServico e a classe Noticia.
+Programe essa página para funcionar dinamicamente, utilizando os dados cadastrados no banco de dados.
+
+Receba o ID da categoria através do parâmetro GET da URL.
+Utilize a classe CategoriaServico para localizar a categoria selecionada.
+Utilize a classe NoticiaServico para buscar as notícias pertencentes à categoria selecionada.
+Para cada notícia, exiba título, data formatada para dia/mês/ano, autor e resumo.
+Caso a notícia não tenha um autor associado, exiba "Equipe Microblog".
+Configure o link dinâmico para abrir noticia.php enviando o ID da notícia selecionada.
+Remova os conteúdos provisórios que estão escritos diretamente no HTML.
+Trate situações em que o ID não seja informado, a categoria não exista ou não possua notícias cadastradas.
+No arquivo prompts.md registre este prompt, sem apagar os registros anteriores.

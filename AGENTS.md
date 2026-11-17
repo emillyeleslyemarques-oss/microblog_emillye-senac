@@ -69,6 +69,7 @@ Convenções existentes:
 - `index.php` exibe notícias em destaque; `includes/todas.php` exibe todas as notícias cadastradas. Os links levam a `noticia.php` com o ID correspondente.
 - `noticia.php` valida o ID recebido pela URL, mostra data em dia/mês/ano, autor, imagem e texto completo. ID inválido ou ausente redireciona para `index.php`; ID válido sem registro exibe “Notícia não encontrada”. Notícias sem usuário associado usam “Equipe Microblog” como autor.
 - `includes/cabecalho.php` usa `CategoriaServico::listarTodos()` para compor o menu de categorias e gerar links com os respectivos IDs.
+- `noticias-por-categoria.php` valida o ID recebido por GET (ID ausente ou inválido redireciona para `index.php`), busca a categoria com `CategoriaServico::buscarPorId()` e suas notícias com `NoticiaServico::listarPorCategoria()`. Mostra título, data, autor e resumo; usa “Equipe Microblog” sem autor e informa quando a categoria não existe ou não possui notícias. A categoria selecionada fica em `$categoriaSelecionada` para evitar colisão com `$categoria`, usado no loop de categorias do cabeçalho incluído.
 - `admin/noticia-insere.php` valida campos e imagem; `admin/noticias.php` aplica o escopo por administrador/editor. As páginas administrativas de atualização e exclusão de notícia implementam suas operações respeitando esse escopo.
 
 ## Validação de alterações
