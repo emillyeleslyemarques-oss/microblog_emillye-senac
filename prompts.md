@@ -158,12 +158,12 @@ O arquivo resultados.php deverá:
 Programe o arquivo busca.js para realizar a comunicação com resultados.php utilizando fetch().
 
 O arquivo busca.js deverá:
-- Capturar o termo digitado pelo usuário no campo de busca.
-- Enviar a solicitação para resultados.php utilizando fetch().
-- Receber e interpretar os dados retornados pelo PHP.
-- Exibir dinamicamente os resultados da pesquisa no Front-End.
-- Atualizar a exibição dos resultados sem precisar recarregar a página.
-- Tratar pesquisas vazias e pesquisas sem resultados.
+ capturar o que esta sendo digitado pelo usuário no campo de busca.
+Enviar a solicitação para resultados.php utilizando fetch().
+Receber e interpretar os dados retornados pelo PHP.
+Exibir dinamicamente os resultados da pesquisa no Front-End.
+ Atualizar a exibição dos resultados sem precisar recarregar a página.
+Tratar pesquisas vazias e pesquisas sem resultados.
 
 Respeite o comportamento e o layout do sistema Microblog original.
 Utilize as classes e os métodos existentes no projeto sempre que possível, evitando duplicação de código.
